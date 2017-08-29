@@ -1,0 +1,36 @@
+version: '2'
+services:
+  analyticsdb:
+    container_name: smadb.solution01.com
+    build: 
+        context: .
+        dockerfile: database/Dockerfile
+    ports:
+     - "3306:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+  apim:
+    container_name: api.solution01.com
+    depends_on:
+      - analyticsdb 
+      - analytics 
+    build: 
+        context: .
+        dockerfile: apim/Dockerfile
+    ports:
+     - "9763:9763"
+     - "9443:9443"
+     - "8280:8280"
+     - "8243:8243"
+  analytics: 
+    container_name: sma.solution01.com
+    depends_on:
+      - analyticsdb
+    build:
+      context: .
+      dockerfile: das/Dockerfile
+    ports:
+      - "9764:9764"
+      - "9444:9444"
+      - "7712:7712"
+      - "7612:7612"

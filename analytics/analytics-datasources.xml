@@ -1,4 +1,4 @@
-tasources-configuration>
+<datasources-configuration>
 
     <providers>
         <provider>org.wso2.carbon.ndatasource.rdbms.RDBMSDataSourceReader</provider>

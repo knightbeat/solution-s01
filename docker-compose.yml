@@ -28,7 +28,7 @@ services:
       - analyticsdb
     build:
       context: .
-      dockerfile: das/Dockerfile
+      dockerfile: analytics/Dockerfile
     ports:
       - "9764:9764"
       - "9444:9444"
